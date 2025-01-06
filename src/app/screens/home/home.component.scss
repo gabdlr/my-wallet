@@ -1,0 +1,68 @@
+@import './../../../sass/mixins';
+
+.menu {
+    display: grid;
+    grid-template: repeat(6,1fr) / repeat(4, 1fr);
+    min-width: 100%;
+    min-height: 100vh;
+    grid-template-areas: 
+    "account account income income"
+    "account account expenses expenses"
+    "budget budget budget budget"
+    "bills-and-receipts bills-and-receipts reports reports"
+    "add-income add-expense transfer add-bills-and-receipts"
+    "summary summary more more"
+    ;
+    
+    & > div {
+        border: 5px solid black;
+    }
+
+    &__account {
+        @include main-menu-button(var(--color-blue-1), account);
+    }
+
+    &__income {
+        @include main-menu-button(var(--color-green-1), income);
+    }
+
+    &__expenses {
+        @include main-menu-button(var(--color-red-1), expenses);
+    }
+
+    &__budget {
+        @include main-menu-button(var(--color-orange-1), budget);
+    }
+
+    &__bills-and-receipts {
+        @include main-menu-button(var(--color-purple-1), bills-and-receipts);
+    }
+
+    &__reports {
+        @include main-menu-button(var(--color-green-2), reports);
+    }
+
+    &__add-income {
+        @include main-menu-button(var(--color-gray-2), add-income);
+    }
+
+    &__add-expense {
+        @include main-menu-button(var(--color-gray-2), add-expense);
+    }
+
+    &__transfer {
+        @include main-menu-button(var(--color-gray-2), transfer);
+    }
+
+    &__add-bills-and-receipts {
+        @include main-menu-button(var(--color-gray-2), add-bills-and-receipts);
+    }
+
+    &__summary {
+        @include main-menu-button(var(--color-brown-1), summary);
+    }
+
+    &__more {
+        @include main-menu-button(var(--color-gray-1), more);
+    }
+}
