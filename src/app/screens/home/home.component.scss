@@ -4,7 +4,7 @@
     display: grid;
     grid-template: repeat(6,1fr) / repeat(4, 1fr);
     min-width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     grid-template-areas: 
     "account account income income"
     "account account expenses expenses"
