@@ -1,68 +1,67 @@
-@import './../../../sass/mixins';
+@import 'mixins';
 
 .menu {
-    display: grid;
-    grid-template: repeat(6,1fr) / repeat(4, 1fr);
-    min-width: 100%;
-    min-height: 100dvh;
-    grid-template-areas: 
-    "account account income income"
-    "account account expenses expenses"
-    "budget budget budget budget"
-    "bills-and-receipts bills-and-receipts reports reports"
-    "add-income add-expense transfer add-bills-and-receipts"
-    "summary summary more more"
-    ;
-    
-    & > div {
-        border: 3px solid black;
-    }
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+  min-width: 100%;
+  min-height: 100dvh;
+  grid-template-areas:
+    'account account income income'
+    'account account expenses expenses'
+    'budget budget budget budget'
+    'bills-and-receipts bills-and-receipts reports reports'
+    'add-income add-expense transfer add-bills-and-receipts'
+    'summary summary more more';
 
-    &__account {
-        @include main-menu-button(var(--color-blue-1), account);
-    }
+  & > div {
+    border: 3px solid black;
+  }
 
-    &__income {
-        @include main-menu-button(var(--color-green-1), income);
-    }
+  &__account {
+    @include main-menu-button(var(--color-blue-1), account);
+  }
 
-    &__expenses {
-        @include main-menu-button(var(--color-red-1), expenses);
-    }
+  &__income {
+    @include main-menu-button(var(--color-green-1), income);
+  }
 
-    &__budget {
-        @include main-menu-button(var(--color-orange-1), budget);
-    }
+  &__expenses {
+    @include main-menu-button(var(--color-red-1), expenses);
+  }
 
-    &__bills-and-receipts {
-        @include main-menu-button(var(--color-purple-1), bills-and-receipts);
-    }
+  &__budget {
+    @include main-menu-button(var(--color-orange-1), budget);
+  }
 
-    &__reports {
-        @include main-menu-button(var(--color-green-2), reports);
-    }
+  &__bills-and-receipts {
+    @include main-menu-button(var(--color-purple-1), bills-and-receipts);
+  }
 
-    &__add-income {
-        @include main-menu-button(var(--color-gray-2), add-income);
-    }
+  &__reports {
+    @include main-menu-button(var(--color-green-2), reports);
+  }
 
-    &__add-expense {
-        @include main-menu-button(var(--color-gray-2), add-expense);
-    }
+  &__add-income {
+    @include main-menu-button(var(--color-gray-2), add-income);
+  }
 
-    &__transfer {
-        @include main-menu-button(var(--color-gray-2), transfer);
-    }
+  &__add-expense {
+    @include main-menu-button(var(--color-gray-2), add-expense);
+  }
 
-    &__add-bills-and-receipts {
-        @include main-menu-button(var(--color-gray-2), add-bills-and-receipts);
-    }
+  &__transfer {
+    @include main-menu-button(var(--color-gray-2), transfer);
+  }
 
-    &__summary {
-        @include main-menu-button(var(--color-brown-1), summary);
-    }
+  &__add-bills-and-receipts {
+    @include main-menu-button(var(--color-gray-2), add-bills-and-receipts);
+  }
 
-    &__more {
-        @include main-menu-button(var(--color-gray-1), more);
-    }
+  &__summary {
+    @include main-menu-button(var(--color-brown-1), summary);
+  }
+
+  &__more {
+    @include main-menu-button(var(--color-gray-1), more);
+  }
 }
