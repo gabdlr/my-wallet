@@ -1,0 +1,50 @@
+name: my-wallet
+on:
+  pull_request:
+    branches: master
+    
+jobs:
+    build-test-lint:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+          with:
+            persist-credentials: false
+            fetch-depth: 0
+        - name: Use Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 22.12.0
+            cache: 'npm'
+        - name: Install chromium browser    
+          run:  | 
+                sudo apt install -y chromium-browser
+                export CHROME_BIN="/usr/bin/chromium-browser"
+        - name: Install npm packages
+          run: npm install
+        - name: Build
+          run: ./node_modules/@angular/cli/bin/ng.js build
+        - name: Lint
+          run: ./node_modules/@angular/cli/bin/ng.js lint --fix
+        - name: Commit lint changes if any
+          run: |
+                CHANGES=$(git status --porcelain | wc -l)
+                if [[ "${CHANGES}" -gt 0 ]]; then
+                    git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                    git config --local user.name "github-actions[bot]"
+                    git commit -a -m "style: lint files ci"
+                else
+                    echo "Nothing to commit"
+                fi
+        - name: Push changes
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ github.head_ref }}
+        - name: Test
+          run: ./node_modules/@angular/cli/bin/ng.js test --no-progress --no-watch --browsers=ChromeHeadless --code-coverage
+        - name: SonarQube Scan
+          uses: SonarSource/sonarqube-scan-action@v4
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
