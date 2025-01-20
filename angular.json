@@ -101,7 +101,8 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/sass"]
             },
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         },
         "lint": {
